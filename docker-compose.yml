@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  app:  &app
+    container_name: dash-air-crash-app
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - "8050:8050"
+    env_file:
+      - ./.env
+    volumes:
+      - ./app:/app
