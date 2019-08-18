@@ -5,30 +5,46 @@ import dash_html_components as html
 app = dash.Dash(__name__)
 
 app.title = "Airplane Crashes Data - Dash"
+
+colors = {
+    'text': '#333333',
+    'title': '#10C10C'
+}
+
+header = html.Header(children=[
+    html.H1(app.title),
+    html.P("Airplane crashes data visualisation project for purposes of presentation about Dash"),
+], style={
+    'textAlign': 'center',
+    'color': colors['title'],
+})
+
+data_source_section = html.Section(children=[
+    html.H2('Data Source'),
+    html.A(
+        'Full history of airplane crashes throughout the world, from 1908-present.',
+        href='https://opendata.socrata.com/Government/Airplane-Crashes-and-Fatalities-Since-1908/q2te-8cvq'
+    ),
+    html.P("Data details:"),
+    html.Ul(children=[
+        html.Li("Total rows: 5268"),
+        html.Li("Source Domain: opendata.socrata.com"),
+        html.Li("Created: 24/06/2009, 18:35:20"),
+    ])
+])
+
 layout = [
-    html.Header(children=[
-        html.H1(app.title),
-        html.P("Airplane crashes data visualisation project for purposes of presentation about Dash"),
-    ]),
-
+    header,
     html.Hr(),
-
-    html.Section(children=[
-            html.H2('Data Source'),
-            html.A(
-                'Full history of airplane crashes throughout the world, from 1908-present.',
-                href='https://opendata.socrata.com/Government/Airplane-Crashes-and-Fatalities-Since-1908/q2te-8cvq'
-            ),
-            html.P("Data details:"),
-            html.Ul(children=[
-                html.Li("Total rows: 5268"),
-                html.Li("Source Domain: opendata.socrata.com"),
-                html.Li("Created: 24/06/2009, 18:35:20"),
-            ])
-    ]),
+    data_source_section,
 ]
 
-app.layout = html.Div(layout, className='container')
+style = {
+    'color': colors['text'],
+    'width': "960px",
+    'margin': "0 auto",
+}
+app.layout = html.Div(layout, className='container', style=style)
 
 if __name__ == '__main__':
     app.run_server(host="0.0.0.0", debug=True)
