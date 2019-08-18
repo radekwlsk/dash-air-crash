@@ -2,22 +2,16 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 
-app = dash.Dash(__name__)
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.title = "Airplane Crashes Data - Dash"
-
-colors = {
-    'text': '#333333',
-    'title': '#10C10C'
-}
 
 header = html.Header(children=[
     html.H1(app.title),
     html.P("Airplane crashes data visualisation project for purposes of presentation about Dash"),
-], style={
-    'textAlign': 'center',
-    'color': colors['title'],
-})
+])
 
 data_source_url = 'https://opendata.socrata.com/Government/Airplane-Crashes-and-Fatalities-Since-1908/q2te-8cvq'
 data_source_section = dcc.Markdown(f"""
@@ -32,16 +26,10 @@ Data details:
 
 layout = [
     header,
-    html.Hr(),
     data_source_section,
 ]
 
-style = {
-    'color': colors['text'],
-    'width': "960px",
-    'margin': "0 auto",
-}
-app.layout = html.Div(layout, className='container', style=style)
+app.layout = html.Div(layout, className='container')
 
 if __name__ == '__main__':
     app.run_server(host="0.0.0.0", debug=True)
