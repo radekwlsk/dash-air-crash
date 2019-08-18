@@ -19,19 +19,16 @@ header = html.Header(children=[
     'color': colors['title'],
 })
 
-data_source_section = html.Section(children=[
-    html.H2('Data Source'),
-    html.A(
-        'Full history of airplane crashes throughout the world, from 1908-present.',
-        href='https://opendata.socrata.com/Government/Airplane-Crashes-and-Fatalities-Since-1908/q2te-8cvq'
-    ),
-    html.P("Data details:"),
-    html.Ul(children=[
-        html.Li("Total rows: 5268"),
-        html.Li("Source Domain: opendata.socrata.com"),
-        html.Li("Created: 24/06/2009, 18:35:20"),
-    ])
-])
+data_source_url = 'https://opendata.socrata.com/Government/Airplane-Crashes-and-Fatalities-Since-1908/q2te-8cvq'
+data_source_section = dcc.Markdown(f"""
+## Data Source
+[Full history of airplane crashes throughout the world, from 1908-present.]({data_source_url})
+
+Data details:
+  - Total rows: 5268
+  - Source Domain: opendata.socrata.com
+  - Created: 24/06/2009, 18:35:20
+""")
 
 layout = [
     header,
