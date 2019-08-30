@@ -21,4 +21,5 @@ def get_air_crashes(limit=2000, raw=False):
         df = pd.DataFrame.from_records(results)
         df['date'] = pd.to_datetime(df['date'], unit='s').dt.date
         df['fatalities'] = pd.to_numeric(df['fatalities'])
+        df['aboard'] = pd.to_numeric(df['aboard'])
         return df
