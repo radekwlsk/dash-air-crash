@@ -41,3 +41,26 @@ a:hover {
     width: 960px;
     margin: 0 auto;
 }
+
+.rc-slider {
+    margin: 1em auto;
+    width: 98%;
+}
+
+.rc-slider-with-marks {
+    padding-bottom: 2em;
+}
+
+.rc-slider-track {
+    background-color: var(--main-darker);
+}
+.rc-slider-dot-active {
+    background-color: var(--main);
+    border-color: var(--main-darker);
+}
+.rc-slider-handle {
+    border-color: var(--main-darker);
+}
+.rc-slider-handle:hover {
+    border-color: var(--main);
+}

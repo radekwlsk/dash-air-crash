@@ -5,3 +5,4 @@ dash-html-components==1.0.0
 plotly==4.1.0
 pandas==0.25.0
 sodapy==1.5.4
+pygeocoder
